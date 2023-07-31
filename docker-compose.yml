@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: sh /entrypoint.sh
+    ports:
+      - "8002:8002"
+  smtp:
+    image: "catatnight/postfix"
+    command: /bin/bash  
+    ports:
+      - "25:25"
+      - "587:587"    
+    environment:
+      - maildomain=gorrasykmiseras.com
+    restart: always
+    stdin_open: true
+    tty: true

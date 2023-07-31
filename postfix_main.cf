@@ -1,0 +1,5 @@
+smtpd_sender_restrictions = check_sender_access hash:/etc/postfix/sender_access
+
+smtp_generic_maps = hash:/etc/postfix/generic
+maillog_file = /var/log/mail.log
+compatibility_level = 2
