@@ -1,4 +1,4 @@
-### Ficheros
+ ### Ficheros
 
 - inidb.py  se encarga de rellenar la bbdd con datos de pruebas *datos.json* al arrancar el servicio
 - cronjob  es la configuración de cron que se instalará en crontab
@@ -51,10 +51,24 @@ Para el tema del envio del correo he usado una modificación del smtplib para po
 
 Aunque aparece como entregado **2.0.0 Ok: queued as B38C28824E** realmente el server destino me lo ha rechazado, supongo que es por temas de ip's y demás..
 
+## Cron
+Al final opté por lo más sencillo que es montar tarea en el crontab con una llamada a un script de django, también podría ser una llamada http con  un curl... Iba a montar el django_cron pern tampoco quería liar mucho el código para una función fantasma.
+
+## BBDD
+Aquí no me complicó mucho, ya que opté por usar el SQLite que viene por defecto con Django. Aunque podría haber instalado MariaDB o MySQL, consideré que eso no era demasiado relevante para el propósito de esta prueba. Creí más interesante instalar el servicio smtp.
+
+## Smtp
+Quizá pedí demasiado tiempo intentando que funcionara el postfix como servicio.. bueno, por lo menos envia algo..que lo acepten los servers destino es otra cuestión ya de IP's y del dominio inventatis.
+mail.log
+```bash
+Jul 31 19:21:26 ae2596e5124c postfix/qmgr[115]: 8D76488E28: from=<ventas@gorraskmisetas.com>, size=909, nrcpt=1 (queue active)
+Jul 31 19:21:27 ae2596e5124c postfix/smtp[128]: connect to pop.melonmail.eu[37.222.109.31]:25: Connection refused
+Jul 31 19:21:27 ae2596e5124c postfix/smtp[128]: connect to mail.melonmail.eu[37.222.109.31]:25: Connection refused
+Jul 31 19:21:27 ae2596e5124c postfix/smtp[128]: 8D76488E28: to=<info@melonmail.eu>, relay=none, delay=0.48, delays=0.01/0.01/0.47/0, dsn=4.4.1, status=deferred (connect to mail.melonmail.eu[37.222.109.31]:25: Connection refused)
+```
 
 
 ## Testing
-
 Como testing lo he verificado directamente con swagger y con un par de scripts sencillos de python para hacer compras directas 
 
 Carro
