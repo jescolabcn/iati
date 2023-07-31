@@ -19,6 +19,7 @@
 He usado **drf_yasg** para generar automáticamente la documentación con swagger
 
 ```url
+   http://localhost:8002
    http://localhost:8002/swagger
 ```
 
