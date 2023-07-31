@@ -11,7 +11,7 @@
 ## Arranque
 
 ```bash
-   docker-compose up -V
+   docker-compose up
 ```
 
 ## Documentación
