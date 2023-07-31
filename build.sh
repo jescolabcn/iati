@@ -1,1 +1,2 @@
-docker-compose -f docker-compose.yml --verbose --project-name iati up
+docker-compose build
+docker-compose start
