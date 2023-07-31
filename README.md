@@ -49,8 +49,7 @@ web_1   | {'info@melonmail.eu': (250, b'2.1.5 Ok'), 'data': (250, b'2.0.0 Ok: qu
 ```
 Para el tema del envio del correo he usado una modificación del smtplib para poder obtener el queue_id de entrega al server, no es reinventar la rueda ya que por defecto las librerias de envio de correo no retornan los datos de cola de entrega...
 
-Aunque aparece como entregado **2.0.0 Ok: queued as B38C28824E** realmente el server destino me lo ha rechazado, supongo que es por temas de ip's y demás..
-
+Aunque aparece como entregado **2.0.0 Ok: queued as B38C28824E** realmente el server destino me lo ha rechazado, supongo que es por temas de ip's o por algun fallo de configuración de smtp
 ## Cron
 Al final opté por lo más sencillo que es montar tarea en el crontab con una llamada a un script de django, también podría ser una llamada http con  un curl... Iba a montar el django_cron pern tampoco quería liar mucho el código para una función fantasma.
 
