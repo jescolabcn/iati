@@ -1,6 +1,5 @@
 cron -f &
 /etc/init.d/postfix start
-cd app
 python manage.py makemigrations
 python manage.py migrate
 
