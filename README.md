@@ -11,7 +11,14 @@
 ## Arranque
 
 ```bash
-   docker-compose up
+   docker-compose build
+   docker-compose start
+   o
+   docker-compose up    si queremos ver el stdout, dará un aviso 
+      ERROR: The image for the service you're trying to recreate has been removed. If you continue, volume data could be lost. Consider backing up your data before continuing.
+      Continue with the new image? [yN]y
+
+
 ```
 
 ## Documentación
