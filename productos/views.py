@@ -20,13 +20,36 @@ from email.mime.text import MIMEText
 
 
 
-class ProductoList(generics.ListAPIView):
-        queryset = Producto.objects.filter(eliminado=False).order_by('tipo', '-fechaInclusion')
-        serializer_class = ProductoSerializer
     
+
+class ProductoList(generics.ListAPIView):
+    queryset = Producto.objects.filter(eliminado=False).order_by('tipo', '-fechaInclusion')
+    serializer_class = ProductoSerializer
+    @swagger_auto_schema(
+        operation_description="Obtener lista de productos",
+        responses={200: ProductoSerializer(many=True)},
+    )
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
 
 class ProductoListCreateView(generics.ListCreateAPIView):
     queryset = Producto.objects.filter(eliminado=False).order_by('tipo', '-fechaInclusion')
+    @swagger_auto_schema(
+        operation_description="Obtener lista de productos",
+        responses={200: ProductoSerializer(many=True)},
+    )
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_description="Insertar un nuevo producto",
+        responses={200: ProductoSerializer()},
+    )
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
+
+
     def get_serializer_class(self):
         if self.request.method == 'POST':        
             return ProductoCreateSerializer
