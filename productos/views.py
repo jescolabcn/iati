@@ -14,7 +14,7 @@ from .serializers import ProductoSerializer,ProductoCreateSerializer,ProductoCar
 from .models import Carrito, ProductoCarrito
 from .serializers import ProductoCarritoSerializer
 
-import smtplib
+
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
